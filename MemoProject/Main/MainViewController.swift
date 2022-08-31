@@ -13,7 +13,7 @@ final class MainViewController: BaseViewController {
     let mainView = MainView()
     
     let repository = UserMemoRepositroy()
-    var tasks: Results<UserMemo>!
+    //var tasks: Results<UserMemo>!
     
     override func loadView() {
         self.view = mainView
@@ -48,26 +48,31 @@ final class MainViewController: BaseViewController {
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return repository.fetchFixedMemo(bool: true).count > 0 ? 2 : 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repository.fetchFixedMemo(bool: true).count
+        return IfManager.shared.numberOfRowsInSection(section: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.reuseable, for: indexPath) as? MainTableViewCell else {
             return UITableViewCell() }
-    
-        cell.titleLabel.text = "장보기"
-        cell.datelabel.text = "오전 0918"
-        cell.contentLabel.text = "감자탕 삼겹살 소고기 무국asdfasdfasdffsadsadfasdfasfd"
         
+        let data = IfManager.shared.cellForRowAt(indexPath: indexPath)
+        
+        cell.titleLabel.text = data[TableViewCellData.title.rawValue]
+        cell.datelabel.text = data[TableViewCellData.dateStr.rawValue]
+        cell.contentLabel.text = data[TableViewCellData.content.rawValue]
         return cell
           
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    
-            return "메모"
-       
+        
+        return IfManager.shared.titleForHeaderInSection(section: section)
+        
     }
     
     

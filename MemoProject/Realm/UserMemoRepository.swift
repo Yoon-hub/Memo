@@ -17,7 +17,7 @@ class UserMemoRepositroy: UserMemoRepositroyType {
     let localRealm = try! Realm()
     
     func fetchFixedMemo(bool: Bool) -> Results<UserMemo> {
-        return localRealm.objects(UserMemo.self).filter(("fixed == \(bool)"))
+        return localRealm.objects(UserMemo.self).sorted(byKeyPath: "date", ascending: true).filter(("fixed == \(bool)"))
     }
     
     

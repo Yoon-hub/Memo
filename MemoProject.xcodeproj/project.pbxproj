@@ -10,6 +10,8 @@
 		67A1738528BFC52F0034B384 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1738428BFC52F0034B384 /* RealmModel.swift */; };
 		67A1738728BFCB560034B384 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1738628BFCB560034B384 /* DateFormatter+Extension.swift */; };
 		67A1738928BFD3C60034B384 /* UserMemoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1738828BFD3C60034B384 /* UserMemoRepository.swift */; };
+		67A1738B28BFE0240034B384 /* IfManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1738A28BFE0240034B384 /* IfManager.swift */; };
+		67A1738F28BFF05C0034B384 /* TableViewCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1738E28BFF05C0034B384 /* TableViewCellData.swift */; };
 		67D4F96028BF9253009472E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D4F95F28BF9253009472E8 /* AppDelegate.swift */; };
 		67D4F96228BF9253009472E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D4F96128BF9253009472E8 /* SceneDelegate.swift */; };
 		67D4F96728BF9253009472E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67D4F96528BF9253009472E8 /* Main.storyboard */; };
@@ -32,6 +34,8 @@
 		67A1738428BFC52F0034B384 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		67A1738628BFCB560034B384 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
 		67A1738828BFD3C60034B384 /* UserMemoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMemoRepository.swift; sourceTree = "<group>"; };
+		67A1738A28BFE0240034B384 /* IfManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfManager.swift; sourceTree = "<group>"; };
+		67A1738E28BFF05C0034B384 /* TableViewCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellData.swift; sourceTree = "<group>"; };
 		67D4F95C28BF9253009472E8 /* MemoProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67D4F95F28BF9253009472E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67D4F96128BF9253009472E8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +76,22 @@
 			path = Realm;
 			sourceTree = "<group>";
 		};
+		67A1738C28BFE0340034B384 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				67A1738A28BFE0240034B384 /* IfManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		67A1738D28BFF0310034B384 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				67A1738E28BFF05C0034B384 /* TableViewCellData.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		67D4F95328BF9253009472E8 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +111,8 @@
 		67D4F95E28BF9253009472E8 /* MemoProject */ = {
 			isa = PBXGroup;
 			children = (
+				67A1738D28BFF0310034B384 /* Enum */,
+				67A1738C28BFE0340034B384 /* Manager */,
 				67A1738328BFC5140034B384 /* Realm */,
 				67D4F98928BFA802009472E8 /* Protocol */,
 				67D4F98428BFA42E009472E8 /* Extension */,
@@ -234,7 +256,9 @@
 				67D4F97628BFA029009472E8 /* BaseViewController.swift in Sources */,
 				67D4F98628BFA442009472E8 /* UIColor+Extension.swift in Sources */,
 				67A1738928BFD3C60034B384 /* UserMemoRepository.swift in Sources */,
+				67A1738F28BFF05C0034B384 /* TableViewCellData.swift in Sources */,
 				67D4F98328BFA236009472E8 /* MainView.swift in Sources */,
+				67A1738B28BFE0240034B384 /* IfManager.swift in Sources */,
 				67D4F98028BFA1DE009472E8 /* BaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
