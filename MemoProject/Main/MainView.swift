@@ -10,9 +10,9 @@ import SnapKit
 
 final class MainView: BaseView {
     
-    lazy var tableView: UITableView = {
+    var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .insetGrouped)
-       // tableView.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.reuseable)
+        view.rowHeight = 65
         view.backgroundColor = .bgColor
         return view
     }()

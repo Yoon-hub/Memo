@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67A1738528BFC52F0034B384 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1738428BFC52F0034B384 /* RealmModel.swift */; };
 		67D4F96028BF9253009472E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D4F95F28BF9253009472E8 /* AppDelegate.swift */; };
 		67D4F96228BF9253009472E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D4F96128BF9253009472E8 /* SceneDelegate.swift */; };
 		67D4F96728BF9253009472E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67D4F96528BF9253009472E8 /* Main.storyboard */; };
@@ -22,9 +23,11 @@
 		67D4F98828BFA499009472E8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D4F98728BFA499009472E8 /* MainViewController.swift */; };
 		67D4F98B28BFA81A009472E8 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D4F98A28BFA81A009472E8 /* BaseTableViewCell.swift */; };
 		67D4F98D28BFA861009472E8 /* ReuseableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D4F98C28BFA861009472E8 /* ReuseableProtocol.swift */; };
+		67D4F98F28BFB012009472E8 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D4F98E28BFB012009472E8 /* MainTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		67A1738428BFC52F0034B384 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		67D4F95C28BF9253009472E8 /* MemoProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67D4F95F28BF9253009472E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67D4F96128BF9253009472E8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +42,7 @@
 		67D4F98728BFA499009472E8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		67D4F98A28BFA81A009472E8 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		67D4F98C28BFA861009472E8 /* ReuseableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseableProtocol.swift; sourceTree = "<group>"; };
+		67D4F98E28BFB012009472E8 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		67A1738328BFC5140034B384 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				67A1738428BFC52F0034B384 /* RealmModel.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		67D4F95328BF9253009472E8 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +86,7 @@
 		67D4F95E28BF9253009472E8 /* MemoProject */ = {
 			isa = PBXGroup;
 			children = (
+				67A1738328BFC5140034B384 /* Realm */,
 				67D4F98928BFA802009472E8 /* Protocol */,
 				67D4F98428BFA42E009472E8 /* Extension */,
 				67D4F97328BF9FFE009472E8 /* Main */,
@@ -93,6 +106,7 @@
 			children = (
 				67D4F98728BFA499009472E8 /* MainViewController.swift */,
 				67D4F98228BFA236009472E8 /* MainView.swift */,
+				67D4F98E28BFB012009472E8 /* MainTableViewCell.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -206,7 +220,9 @@
 				67D4F98828BFA499009472E8 /* MainViewController.swift in Sources */,
 				67D4F98D28BFA861009472E8 /* ReuseableProtocol.swift in Sources */,
 				67D4F96028BF9253009472E8 /* AppDelegate.swift in Sources */,
+				67A1738528BFC52F0034B384 /* RealmModel.swift in Sources */,
 				67D4F98B28BFA81A009472E8 /* BaseTableViewCell.swift in Sources */,
+				67D4F98F28BFB012009472E8 /* MainTableViewCell.swift in Sources */,
 				67D4F96228BF9253009472E8 /* SceneDelegate.swift in Sources */,
 				67D4F97628BFA029009472E8 /* BaseViewController.swift in Sources */,
 				67D4F98628BFA442009472E8 /* UIColor+Extension.swift in Sources */,
