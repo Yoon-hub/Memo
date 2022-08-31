@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 final class MainViewController: BaseViewController {
     
     let mainView = MainView()
+    
+    let repository = UserMemoRepositroy()
+    var tasks: Results<UserMemo>!
     
     override func loadView() {
         self.view = mainView
@@ -17,6 +21,7 @@ final class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+     
     }
     
     
@@ -44,7 +49,7 @@ final class MainViewController: BaseViewController {
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        return repository.fetchFixedMemo(bool: true).count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,10 +58,16 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
         cell.titleLabel.text = "장보기"
         cell.datelabel.text = "오전 0918"
-        cell.contentLabel.text = "감자탕 삼겹살 소고기 무국"
+        cell.contentLabel.text = "감자탕 삼겹살 소고기 무국asdfasdfasdffsadsadfasdfasfd"
         
         return cell
           
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    
+            return "메모"
+       
     }
     
     

@@ -17,9 +17,17 @@ final class MainView: BaseView {
         return view
     }()
     
+    var memoButton: UIButton = {
+        let view = UIButton()
+        let config = UIImage.SymbolConfiguration(pointSize: 50)
+        view.setImage(UIImage(systemName: "square.and.pencil", withConfiguration: config), for: .normal)
+        view.tintColor = .tintColor
+        return view
+    }()
+    
     override func configure() {
         super.configure()
-        [tableView].forEach { self.addSubview($0) }
+        [tableView, memoButton].forEach { self.addSubview($0) }
     }
     
     override func setConstraints() {
@@ -29,5 +37,11 @@ final class MainView: BaseView {
             make.top.trailing.leading.equalTo(self.safeAreaLayoutGuide)
             make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-15)
         }
+        memoButton.snp.makeConstraints { make in
+            make.trailing.equalTo(self).offset(-16)
+            make.bottom.equalTo(tableView.snp.bottom).offset(16)
+            make.width.height.equalTo(30)
+        }
     }
 }
+
