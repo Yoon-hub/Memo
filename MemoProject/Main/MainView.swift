@@ -35,11 +35,11 @@ final class MainView: BaseView {
         
         tableView.snp.makeConstraints { make in
             make.top.trailing.leading.equalTo(self.safeAreaLayoutGuide)
-            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-15)
+            make.bottom.equalTo(self.safeAreaLayoutGuide).multipliedBy(0.9)
         }
         memoButton.snp.makeConstraints { make in
             make.trailing.equalTo(self).offset(-16)
-            make.bottom.equalTo(tableView.snp.bottom).offset(16)
+            make.top.equalTo(tableView.snp.bottom).offset(16)
             make.width.height.equalTo(30)
         }
     }

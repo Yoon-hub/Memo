@@ -79,5 +79,23 @@ class IfManager {
         }
         return dateFormat
     }
+    
+    func deleteButtoncClicked(indexPath: IndexPath) {
+        
+        let fixedTasks = self.repository.fetchFixedMemo(bool: true)
+        let anfixedTasks = self.repository.fetchFixedMemo(bool: false)
+        
+        if fixedTasks.count > 0 {
+            if indexPath.section == 0 {
+                self.repository.deletItem(task: fixedTasks[indexPath.row])
+            } else {
+                self.repository.deletItem(task: anfixedTasks[indexPath.row])
+            }
+            
+        } else {
+            self.repository.deletItem(task: anfixedTasks[indexPath.row])
+        }
+       
+    }
    
 }

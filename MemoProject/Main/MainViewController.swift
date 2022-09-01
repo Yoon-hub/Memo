@@ -21,7 +21,7 @@ final class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        
     }
     
     
@@ -40,7 +40,9 @@ final class MainViewController: BaseViewController {
         searchController.searchBar.setValue("취소", forKey:"cancelButtonText")
         searchController.searchBar.tintColor = .tintColor
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "1,234개의 메모"
+        
+        let count = NSNumber(value: Int32(repository.fetch().count))
+        navigationItem.title = NumberFormatter.plusComma(count: count) + "개의 메모"
         navigationItem.searchController = searchController
         
     }
@@ -66,14 +68,33 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         cell.datelabel.text = data[TableViewCellData.dateStr.rawValue]
         cell.contentLabel.text = data[TableViewCellData.content.rawValue]
         return cell
-          
+        
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
         return IfManager.shared.titleForHeaderInSection(section: section)
-        
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteButton = UIContextualAction(style: .normal, title: nil) { action, view, completion in
+            IfManager.shared.deleteButtoncClicked(indexPath: indexPath)
+            self.mainView.tableView.reloadData()
+        }
+        deleteButton.image = UIImage(systemName: "trash.fill")
+        deleteButton.backgroundColor = .red
+        return UISwipeActionsConfiguration(actions: [deleteButton])
+    }
+    
+
+    //headerView font 변경
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = .boldSystemFont(ofSize: 21)
+        header.textLabel?.textColor = UIColor.label
+    }
+    
+   
+    
     
     
 }
