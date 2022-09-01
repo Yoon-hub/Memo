@@ -47,7 +47,6 @@ final class MainViewController: BaseViewController {
         
     }
 }
-
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -93,7 +92,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return UISwipeActionsConfiguration(actions: [])
     }
     
-
+    
     //headerView font 변경
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
@@ -101,7 +100,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         header.textLabel?.textColor = UIColor.label
     }
     
-   
+    
     
     
     
