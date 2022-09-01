@@ -68,7 +68,7 @@ class IfManager {
     }
     
     
-    private func timeInterval(interval: TimeInterval) -> String {
+     func timeInterval(interval: TimeInterval) -> String {
         var dateFormat: String
         if interval < 86000 {
             dateFormat = "a hh:mm"
@@ -97,6 +97,7 @@ class IfManager {
         }
        
     }
+    
     
     func fixedButtonClicked(indexPath: IndexPath) {
         let fixedTasks = self.repository.fetchFixedMemo(bool: true)

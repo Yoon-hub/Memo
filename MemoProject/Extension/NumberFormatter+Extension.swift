@@ -9,11 +9,11 @@ import Foundation
 
 extension NumberFormatter {
     
-    static func plusComma(count: NSNumber) -> String {
+    static func plusComma(count: Int) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
     
-        return formatter.string(from: count) ?? "0" 
+        return formatter.string(for: count) ?? "0"
         
     }
 }

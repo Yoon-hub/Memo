@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		671A1A5828C1079200BACC97 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A1A5728C1079200BACC97 /* SearchViewController.swift */; };
 		67A1738528BFC52F0034B384 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1738428BFC52F0034B384 /* RealmModel.swift */; };
 		67A1738728BFCB560034B384 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1738628BFCB560034B384 /* DateFormatter+Extension.swift */; };
 		67A1738928BFD3C60034B384 /* UserMemoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1738828BFD3C60034B384 /* UserMemoRepository.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		671A1A5728C1079200BACC97 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		67A1738428BFC52F0034B384 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		67A1738628BFCB560034B384 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
 		67A1738828BFD3C60034B384 /* UserMemoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMemoRepository.swift; sourceTree = "<group>"; };
@@ -69,6 +71,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		671A1A5628C1078000BACC97 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				671A1A5728C1079200BACC97 /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		67A1738328BFC5140034B384 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +123,7 @@
 		67D4F95E28BF9253009472E8 /* MemoProject */ = {
 			isa = PBXGroup;
 			children = (
+				671A1A5628C1078000BACC97 /* Search */,
 				67A1738D28BFF0310034B384 /* Enum */,
 				67A1738C28BFE0340034B384 /* Manager */,
 				67A1738328BFC5140034B384 /* Realm */,
@@ -251,6 +262,7 @@
 				67A1738728BFCB560034B384 /* DateFormatter+Extension.swift in Sources */,
 				67D4F98828BFA499009472E8 /* MainViewController.swift in Sources */,
 				67D4F98D28BFA861009472E8 /* ReuseableProtocol.swift in Sources */,
+				671A1A5828C1079200BACC97 /* SearchViewController.swift in Sources */,
 				67D4F96028BF9253009472E8 /* AppDelegate.swift in Sources */,
 				67A1738528BFC52F0034B384 /* RealmModel.swift in Sources */,
 				67D4F98B28BFA81A009472E8 /* BaseTableViewCell.swift in Sources */,

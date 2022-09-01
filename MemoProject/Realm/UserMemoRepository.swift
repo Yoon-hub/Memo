@@ -13,6 +13,7 @@ protocol UserMemoRepositroyType {
     func fetchFixedMemo(bool: Bool) -> Results<UserMemo>
     func deletItem(task: UserMemo)
     func fixedChage(task: UserMemo)
+    func filter(text: String) -> Results<UserMemo>
 }
 
 class UserMemoRepositroy: UserMemoRepositroyType {
@@ -21,6 +22,7 @@ class UserMemoRepositroy: UserMemoRepositroyType {
     
     
     func fetch() -> Results<UserMemo> {
+        //print("Realm is located at:", localRealm.configuration.fileURL!)
         return localRealm.objects(UserMemo.self)
     }
     
@@ -38,6 +40,11 @@ class UserMemoRepositroy: UserMemoRepositroyType {
         try! localRealm.write {
             task.fixed = !task.fixed
         }
+    }
+    
+    func filter(text: String) -> Results<UserMemo> {
+        print(text)
+        return localRealm.objects(UserMemo.self).filter("title CONTAINS '\(text)' or content CONTAINS '\(text)'")
     }
     
 }
