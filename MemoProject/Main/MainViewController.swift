@@ -86,10 +86,18 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let fixButton = UIContextualAction(style: .normal, title: nil) { action, view, completion in
-            
+            IfManager.shared.fixedButtonClicked(indexPath: indexPath)
+            self.mainView.tableView.reloadData()
         }
         
-        return UISwipeActionsConfiguration(actions: [])
+        if repository.fetchFixedMemo(bool: true).count > 0 {
+            fixButton.image = indexPath.section == 0 ? UIImage(systemName: "pin.slash.fill") : UIImage(systemName: "pin.fill")
+        } else {
+            fixButton.image = UIImage(systemName: "pin.fill")
+        }
+        fixButton.backgroundColor = .tintColor
+
+        return UISwipeActionsConfiguration(actions: [fixButton])
     }
     
     

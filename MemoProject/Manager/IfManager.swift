@@ -97,5 +97,21 @@ class IfManager {
         }
        
     }
+    
+    func fixedButtonClicked(indexPath: IndexPath) {
+        let fixedTasks = self.repository.fetchFixedMemo(bool: true)
+        let anfixedTasks = self.repository.fetchFixedMemo(bool: false)
+        
+        if fixedTasks.count > 0 {
+            if indexPath.section == 0 {
+                self.repository.fixedChage(task: fixedTasks[indexPath.row])
+            }
+            else {
+                self.repository.fixedChage(task: anfixedTasks[indexPath.row])
+            }
+        } else {
+            self.repository.fixedChage(task: anfixedTasks[indexPath.row])
+        }
+    }
    
 }

@@ -12,6 +12,7 @@ protocol UserMemoRepositroyType {
     func fetch() -> Results<UserMemo>
     func fetchFixedMemo(bool: Bool) -> Results<UserMemo>
     func deletItem(task: UserMemo)
+    func fixedChage(task: UserMemo)
 }
 
 class UserMemoRepositroy: UserMemoRepositroyType {
@@ -30,6 +31,12 @@ class UserMemoRepositroy: UserMemoRepositroyType {
     func deletItem(task: UserMemo) {
         try! localRealm.write {
             localRealm.delete(task)
+        }
+    }
+    
+    func fixedChage(task: UserMemo) {
+        try! localRealm.write {
+            task.fixed = !task.fixed
         }
     }
     
