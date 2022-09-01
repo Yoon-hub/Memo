@@ -85,6 +85,14 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return UISwipeActionsConfiguration(actions: [deleteButton])
     }
     
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let fixButton = UIContextualAction(style: .normal, title: nil) { action, view, completion in
+            
+        }
+        
+        return UISwipeActionsConfiguration(actions: [])
+    }
+    
 
     //headerView font 변경
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
