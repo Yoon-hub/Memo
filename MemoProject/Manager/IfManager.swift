@@ -5,7 +5,7 @@
 //  Created by 최윤제 on 2022/09/01.
 //
 
-import Foundation
+import UIKit
 import RealmSwift
 
 class IfManager {
@@ -113,6 +113,34 @@ class IfManager {
         } else {
             self.repository.fixedChage(task: anfixedTasks[indexPath.row])
         }
+    }
+    
+    func checkFixMemoCount(isFiltering: Bool, tasks: Results<UserMemo>,indexPath: IndexPath, completion: @escaping () -> ()) {
+        if isFiltering {
+            if self.repository.fetchFixedMemo(bool: true).count >= 5 && tasks[indexPath.row].fixed == false {
+                completion() // 메모 띄우기
+            } else {
+                self.repository.fixedChage(task: tasks[indexPath.row])
+            }
+        } else {
+            if self.repository.fetchFixedMemo(bool: true).count >= 5 && indexPath.section == 1 {
+                completion()
+            } else {
+                IfManager.shared.fixedButtonClicked(indexPath: indexPath)
+            }
+        }
+    }
+    
+    func chageTextColor(text: String, searchText: String) -> NSMutableAttributedString {
+
+        // myLabel의 text로 NSMutableAttributedString 인스턴스를 만들어줍니다.
+        let attributeString = NSMutableAttributedString(string: text)
+
+        // NSMutableAttributedString에 속성을 추가합니다.
+        // 현재 추가한 속성은 "Pingu"만 빨간색으로 바꾼다! 입니다.
+        attributeString.addAttribute(.foregroundColor, value: UIColor.tintColor, range: (text as NSString).range(of: searchText))
+        return attributeString
+
     }
    
 }

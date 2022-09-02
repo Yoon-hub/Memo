@@ -20,7 +20,7 @@ final class MainViewController: BaseViewController {
         let searchController = self.navigationItem.searchController
         let isActive = searchController?.isActive ?? false
         let isSearchBarHasText = searchController?.searchBar.text?.isEmpty == false
-        return isActive && isSearchBarHasText
+        return isActive || isSearchBarHasText
     }
     
     override func loadView() {
@@ -29,7 +29,7 @@ final class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tasks = repository.fetch()
     }
     
     override func configue() {
@@ -81,8 +81,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell() }
 
         if isFiltering {
-            cell.titleLabel.text = tasks[indexPath.row].title
-            cell.contentLabel.text = tasks[indexPath.row].content ?? "추가 택스트 없음"
+            cell.titleLabel.attributedText = IfManager.shared.chageTextColor(text: tasks[indexPath.row].title, searchText: (navigationItem.searchController?.searchBar.text)!)
+            cell.contentLabel.attributedText = IfManager.shared.chageTextColor(text: tasks[indexPath.row].content ?? "추가 택스트 없음", searchText: (navigationItem.searchController?.searchBar.text)!)
             let interval = Date().timeIntervalSince(tasks[indexPath.row].date)
             let dateStr = IfManager.shared.timeInterval(interval: interval)
             cell.datelabel.text = DateFormatter.dateToString(date: tasks[indexPath.row].date, dateFormat: dateStr)
@@ -120,18 +120,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let fixButton = UIContextualAction(style: .normal, title: nil) { action, view, completion in
-            if self.isFiltering {
-                if self.repository.fetchFixedMemo(bool: true).count >= 5 && self.tasks[indexPath.row].fixed == false {
-                    self.showAlert(title: "메모 고정은 5개 이상 못해요!")
-                } else {
-                    self.repository.fixedChage(task: self.tasks[indexPath.row])
-                }
-            } else {
-                if self.repository.fetchFixedMemo(bool: true).count >= 5 && indexPath.section == 1 {
-                    self.showAlert(title: "메모 고정은 5개 이상 못해요!")
-                } else {
-                    IfManager.shared.fixedButtonClicked(indexPath: indexPath)
-                }
+            IfManager.shared.checkFixMemoCount(isFiltering: self.isFiltering, tasks: self.tasks, indexPath: indexPath) {
+                self.showAlert(title: "메모는 5개 이상 못해요ㅠㅠㅠㅠㅠㅠ")
             }
    
             self.mainView.tableView.reloadData()
@@ -166,7 +156,7 @@ extension MainViewController: UISearchResultsUpdating {
         //print(searchController.searchBar.text!)
         
         tasks = repository.filter(text: searchController.searchBar.text!)
-        print(tasks)
+        //print(tasks)
         mainView.tableView.reloadData()
     }
     
