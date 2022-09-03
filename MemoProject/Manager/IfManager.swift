@@ -39,20 +39,25 @@ class IfManager {
         }
     }
     
-    func cellForRowAt(indexPath: IndexPath) -> [String]{
+    func cellForRowAt(indexPath: IndexPath, isFiltering: Bool, tasks: Results<UserMemo>) -> [String]{
         
         let fixedTasks = repository.fetchFixedMemo(bool: true)
         let anfixedTasks = repository.fetchFixedMemo(bool: false)
         
-        if fixedTasks.count > 0 {
-            if indexPath.section == 0 {
-               return findTitle(tasks: fixedTasks, indexPath: indexPath)
+        if isFiltering {
+            return findTitle(tasks: tasks, indexPath: indexPath)
+        } else {
+            if fixedTasks.count > 0 {
+                if indexPath.section == 0 {
+                   return findTitle(tasks: fixedTasks, indexPath: indexPath)
+                } else {
+                    return findTitle(tasks: anfixedTasks, indexPath: indexPath)
+                }
             } else {
                 return findTitle(tasks: anfixedTasks, indexPath: indexPath)
             }
-        } else {
-            return findTitle(tasks: anfixedTasks, indexPath: indexPath)
         }
+    
     }
 
     private func findTitle(tasks: Results<UserMemo>, indexPath: IndexPath) -> [String] {

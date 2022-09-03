@@ -112,20 +112,22 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.reuseable, for: indexPath) as? MainTableViewCell else {
             return UITableViewCell() }
-
+        
+        let data = IfManager.shared.cellForRowAt(indexPath: indexPath, isFiltering: isFiltering, tasks: tasks)
+        
         if isFiltering {
-            cell.titleLabel.attributedText = IfManager.shared.chageTextColor(text: tasks[indexPath.row].title, searchText: (navigationItem.searchController?.searchBar.text)!)
-            cell.contentLabel.attributedText = IfManager.shared.chageTextColor(text: tasks[indexPath.row].content ?? "추가 택스트 없음", searchText: (navigationItem.searchController?.searchBar.text)!)
-            let interval = Date().timeIntervalSince(tasks[indexPath.row].date)
-            let dateStr = IfManager.shared.timeInterval(interval: interval)
-            cell.datelabel.text = DateFormatter.dateToString(date: tasks[indexPath.row].date, dateFormat: dateStr)
+            cell.titleLabel.attributedText = IfManager.shared.chageTextColor(text: data[TableViewCellData.title.rawValue], searchText: (navigationItem.searchController?.searchBar.text!)!)
+            cell.contentLabel.attributedText = IfManager.shared.chageTextColor(text: data[TableViewCellData.content.rawValue] ?? "추가 택스트 없음", searchText: (navigationItem.searchController?.searchBar.text)!)
         } else {
-            let data = IfManager.shared.cellForRowAt(indexPath: indexPath)
             cell.titleLabel.text = data[TableViewCellData.title.rawValue]
             cell.titleLabel.textColor = .label
-            cell.datelabel.text = data[TableViewCellData.dateStr.rawValue]
+            cell.contentLabel.textColor = .systemGray
             cell.contentLabel.text = data[TableViewCellData.content.rawValue]
         }
+           
+        cell.datelabel.text = data[TableViewCellData.dateStr.rawValue]
+        
+    
         return cell
     }
     
@@ -169,7 +171,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 fixButton.image = UIImage(systemName: "pin.fill")
             }
         }
-    
+        
         fixButton.backgroundColor = .tintColor
         return UISwipeActionsConfiguration(actions: [fixButton])
     }
