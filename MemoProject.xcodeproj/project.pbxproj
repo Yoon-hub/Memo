@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		677EC79F28C27DC900E2A5A4 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677EC79E28C27DC900E2A5A4 /* AddViewController.swift */; };
+		677EC7A428C3B9DF00E2A5A4 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677EC7A328C3B9DF00E2A5A4 /* WalkthroughViewController.swift */; };
+		677EC7A628C3BD1B00E2A5A4 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677EC7A528C3BD1B00E2A5A4 /* UserDefaults+Extension.swift */; };
 		67A1738528BFC52F0034B384 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1738428BFC52F0034B384 /* RealmModel.swift */; };
 		67A1738728BFCB560034B384 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1738628BFCB560034B384 /* DateFormatter+Extension.swift */; };
 		67A1738928BFD3C60034B384 /* UserMemoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A1738828BFD3C60034B384 /* UserMemoRepository.swift */; };
@@ -34,6 +36,8 @@
 
 /* Begin PBXFileReference section */
 		677EC79E28C27DC900E2A5A4 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		677EC7A328C3B9DF00E2A5A4 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
+		677EC7A528C3BD1B00E2A5A4 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		67A1738428BFC52F0034B384 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		67A1738628BFCB560034B384 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
 		67A1738828BFD3C60034B384 /* UserMemoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMemoRepository.swift; sourceTree = "<group>"; };
@@ -77,6 +81,14 @@
 				677EC79E28C27DC900E2A5A4 /* AddViewController.swift */,
 			);
 			path = Add;
+			sourceTree = "<group>";
+		};
+		677EC7A228C3B9C700E2A5A4 /* Walkthrough */ = {
+			isa = PBXGroup;
+			children = (
+				677EC7A328C3B9DF00E2A5A4 /* WalkthroughViewController.swift */,
+			);
+			path = Walkthrough;
 			sourceTree = "<group>";
 		};
 		67A1738328BFC5140034B384 /* Realm */ = {
@@ -123,6 +135,7 @@
 		67D4F95E28BF9253009472E8 /* MemoProject */ = {
 			isa = PBXGroup;
 			children = (
+				677EC7A228C3B9C700E2A5A4 /* Walkthrough */,
 				677EC79D28C27DB300E2A5A4 /* Add */,
 				67A1738D28BFF0310034B384 /* Enum */,
 				67A1738C28BFE0340034B384 /* Manager */,
@@ -167,6 +180,7 @@
 				67D4F98528BFA442009472E8 /* UIColor+Extension.swift */,
 				67A1738628BFCB560034B384 /* DateFormatter+Extension.swift */,
 				67A1739028BFF3DB0034B384 /* NumberFormatter+Extension.swift */,
+				677EC7A528C3BD1B00E2A5A4 /* UserDefaults+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -266,9 +280,11 @@
 				67D4F96028BF9253009472E8 /* AppDelegate.swift in Sources */,
 				67A1738528BFC52F0034B384 /* RealmModel.swift in Sources */,
 				67D4F98B28BFA81A009472E8 /* BaseTableViewCell.swift in Sources */,
+				677EC7A428C3B9DF00E2A5A4 /* WalkthroughViewController.swift in Sources */,
 				67D4F98F28BFB012009472E8 /* MainTableViewCell.swift in Sources */,
 				67D4F96228BF9253009472E8 /* SceneDelegate.swift in Sources */,
 				67D4F97628BFA029009472E8 /* BaseViewController.swift in Sources */,
+				677EC7A628C3BD1B00E2A5A4 /* UserDefaults+Extension.swift in Sources */,
 				67D4F98628BFA442009472E8 /* UIColor+Extension.swift in Sources */,
 				67A1738928BFD3C60034B384 /* UserMemoRepository.swift in Sources */,
 				67A1738F28BFF05C0034B384 /* TableViewCellData.swift in Sources */,

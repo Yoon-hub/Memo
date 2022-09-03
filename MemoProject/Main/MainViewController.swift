@@ -29,14 +29,29 @@ final class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         mainView.tableView.keyboardDismissMode = .onDrag
         tasks = repository.fetch()
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.title = NumberFormatter.plusComma(count: repository.fetch().count) + "개의 메모"
         mainView.tableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !UserDefaults.firstVisited {
+            let vc = WalkthroughViewController()
+            vc.modalPresentationStyle = .overFullScreen
+            vc.modalTransitionStyle = .crossDissolve
+            present(vc, animated: true)
+            UserDefaults.firstVisited = true
+        }
+        
     }
     
     override func configue() {
@@ -61,7 +76,6 @@ final class MainViewController: BaseViewController {
         let searchController = UISearchController(searchResultsController: nil)
         
         searchController.searchResultsUpdater = self
-        
         searchController.searchBar.placeholder = "검색"
         searchController.searchBar.setValue("취소", forKey:"cancelButtonText")
         searchController.searchBar.tintColor = .tintColor

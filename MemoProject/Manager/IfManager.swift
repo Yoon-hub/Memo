@@ -132,12 +132,7 @@ class IfManager {
     }
     
     func chageTextColor(text: String, searchText: String) -> NSMutableAttributedString {
-
-        // myLabel의 text로 NSMutableAttributedString 인스턴스를 만들어줍니다.
         let attributeString = NSMutableAttributedString(string: text)
-
-        // NSMutableAttributedString에 속성을 추가합니다.
-        // 현재 추가한 속성은 "Pingu"만 빨간색으로 바꾼다! 입니다.
         attributeString.addAttribute(.foregroundColor, value: UIColor.tintColor, range: (text as NSString).range(of: searchText))
         return attributeString
     }

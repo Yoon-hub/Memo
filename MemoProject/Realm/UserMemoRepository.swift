@@ -14,6 +14,8 @@ protocol UserMemoRepositroyType {
     func deletItem(task: UserMemo)
     func fixedChage(task: UserMemo)
     func filter(text: String) -> Results<UserMemo>
+    func addItem(task: UserMemo)
+    func modifyItem(chagneTask: UserMemo, task: UserMemo)
 }
 
 class UserMemoRepositroy: UserMemoRepositroyType {

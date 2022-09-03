@@ -10,5 +10,6 @@ import UIKit
 extension UIColor {
     static var bgColor = UIColor(named: "bgColor")
     static var tintColor = UIColor(named: "tintColor")
+    static var firstColor = UIColor(named: "firstColor")
 }
 

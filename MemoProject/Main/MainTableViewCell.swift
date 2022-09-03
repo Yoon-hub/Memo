@@ -36,7 +36,6 @@ final class MainTableViewCell: BaseTableViewCell {
         super.configure()
         
         [titleLabel, datelabel, contentLabel].forEach { self.addSubview($0) }
-
     }
     
     override func setConstraints() {
