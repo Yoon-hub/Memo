@@ -9,6 +9,8 @@ import UIKit
 
 class AddViewController: BaseViewController {
     
+    let repository = UserMemoRepositroy()
+    
     let textView: UITextView = {
         let view = UITextView()
         view.backgroundColor = .bgColor
@@ -47,7 +49,14 @@ class AddViewController: BaseViewController {
         guard let text = textView.text, !text.isEmpty, text.trimmingCharacters(in: .whitespaces) != "" else {
             return
         }
-        IfManager.shared.editText(text: text)
+        let addTask = IfManager.shared.splitText(text: text)
+        if !modify{
+            repository.addItem(task: addTask)
+        } else {
+            if let task = task {
+                repository.modifyItem(chagneTask: task, task: addTask)
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -59,7 +68,7 @@ class AddViewController: BaseViewController {
     
     @objc
     func shareButtonClicked() {
-        
+        showAlert(title: "준비중~~")
     }
     
     @objc
@@ -71,7 +80,6 @@ class AddViewController: BaseViewController {
     func navigationConfigue() {
         navigationController?.navigationBar.topItem?.title = "\(backButtonTitle)"
         navigationController?.navigationBar.tintColor = .tintColor
-
     }
     
 }

@@ -142,7 +142,7 @@ class IfManager {
         return attributeString
     }
     
-    func editText(text: String) {
+    func splitText(text: String) -> UserMemo{
         let split = text.split(separator: "\n")
         let title = split[0]
         var content: String? = nil
@@ -153,7 +153,7 @@ class IfManager {
         }
         
         let task = UserMemo(title: String(title), content: content)
-        repository.addItem(task: task)
+        return task
     }
     
     func didSelectRowAt(isFiltering: Bool, tasks: Results<UserMemo>, indexPath: IndexPath) -> AddViewController{

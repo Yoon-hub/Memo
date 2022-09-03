@@ -23,11 +23,11 @@ class UserMemoRepositroy: UserMemoRepositroyType {
     
     func fetch() -> Results<UserMemo> {
         //print("Realm is located at:", localRealm.configuration.fileURL!)
-        return localRealm.objects(UserMemo.self)
+        return localRealm.objects(UserMemo.self).sorted(byKeyPath: "date", ascending: false)
     }
     
     func fetchFixedMemo(bool: Bool) -> Results<UserMemo> {
-        return localRealm.objects(UserMemo.self).sorted(byKeyPath: "date", ascending: true).filter(("fixed == \(bool)"))
+        return localRealm.objects(UserMemo.self).sorted(byKeyPath: "date", ascending: false).filter(("fixed == \(bool)"))
     }
     
     func deletItem(task: UserMemo) {
@@ -43,14 +43,21 @@ class UserMemoRepositroy: UserMemoRepositroyType {
     }
     
     func filter(text: String) -> Results<UserMemo> {
-        print(text)
-        return localRealm.objects(UserMemo.self).filter("title CONTAINS '\(text)' or content CONTAINS '\(text)'")
+        return localRealm.objects(UserMemo.self).filter("title CONTAINS '\(text)' or content CONTAINS '\(text)'").sorted(byKeyPath: "date", ascending: false)
     }
     
     func addItem(task: UserMemo) {
         
         try! localRealm.write {
             localRealm.add(task) //Create
+        }
+    }
+    
+    func modifyItem(chagneTask: UserMemo, task: UserMemo) {
+        try! localRealm.write {
+            chagneTask.content = task.content
+            chagneTask.title = task.title
+            chagneTask.date = Date()
         }
     }
     

@@ -162,6 +162,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     //headerView font 변경
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.font = .boldSystemFont(ofSize: 21)
         header.textLabel?.textColor = UIColor.label
@@ -177,10 +178,7 @@ extension MainViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         
-        //print(searchController.searchBar.text!)
-        
         tasks = repository.filter(text: searchController.searchBar.text!)
-        //print(tasks)
         mainView.tableView.reloadData()
     }
     
