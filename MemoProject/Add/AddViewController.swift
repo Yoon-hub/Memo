@@ -68,7 +68,10 @@ class AddViewController: BaseViewController {
     
     @objc
     func shareButtonClicked() {
-        showAlert(title: "준비중~~")
+        let text = textView.text
+        var shareText = [text]
+        let activityViewControlelr = UIActivityViewController(activityItems: shareText, applicationActivities: nil)
+        self.present(activityViewControlelr, animated: true, completion: nil)
     }
     
     @objc
