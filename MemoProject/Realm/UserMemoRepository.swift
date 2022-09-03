@@ -47,4 +47,11 @@ class UserMemoRepositroy: UserMemoRepositroyType {
         return localRealm.objects(UserMemo.self).filter("title CONTAINS '\(text)' or content CONTAINS '\(text)'")
     }
     
+    func addItem(task: UserMemo) {
+        
+        try! localRealm.write {
+            localRealm.add(task) //Create
+        }
+    }
+    
 }

@@ -29,7 +29,14 @@ final class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mainView.tableView.keyboardDismissMode = .onDrag
         tasks = repository.fetch()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = NumberFormatter.plusComma(count: repository.fetch().count) + "개의 메모"
+        mainView.tableView.reloadData()
     }
     
     override func configue() {
@@ -39,6 +46,15 @@ final class MainViewController: BaseViewController {
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
         mainView.tableView.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.reuseable)
+        
+        mainView.memoButton.addTarget(self, action: #selector(memoButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc
+    func memoButtonClicked() {
+        let vc = AddViewController()
+        navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     func setNavigationConfigue() {
@@ -51,14 +67,17 @@ final class MainViewController: BaseViewController {
         searchController.searchBar.tintColor = .tintColor
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        
-        navigationItem.title = NumberFormatter.plusComma(count: repository.fetch().count) + "개의 메모"
         navigationItem.searchController = searchController
         
     }
 }
 //MARK: - Table
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = IfManager.shared.didSelectRowAt(isFiltering: isFiltering, tasks: tasks, indexPath: indexPath)
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if isFiltering {
@@ -89,6 +108,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let data = IfManager.shared.cellForRowAt(indexPath: indexPath)
             cell.titleLabel.text = data[TableViewCellData.title.rawValue]
+            cell.titleLabel.textColor = .label
             cell.datelabel.text = data[TableViewCellData.dateStr.rawValue]
             cell.contentLabel.text = data[TableViewCellData.content.rawValue]
         }
@@ -123,7 +143,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             IfManager.shared.checkFixMemoCount(isFiltering: self.isFiltering, tasks: self.tasks, indexPath: indexPath) {
                 self.showAlert(title: "메모는 5개 이상 못해요ㅠㅠㅠㅠㅠㅠ")
             }
-   
             self.mainView.tableView.reloadData()
         }
         
@@ -147,8 +166,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         header.textLabel?.font = .boldSystemFont(ofSize: 21)
         header.textLabel?.textColor = UIColor.label
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
 }
 
+//MARK: - SearchController
 extension MainViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {

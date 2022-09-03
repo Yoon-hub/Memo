@@ -14,6 +14,5 @@ extension NumberFormatter {
         formatter.numberStyle = .decimal
     
         return formatter.string(for: count) ?? "0"
-        
     }
 }

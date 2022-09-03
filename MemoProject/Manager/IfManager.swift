@@ -13,7 +13,7 @@ class IfManager {
     static let shared = IfManager()
     
     let repository = UserMemoRepositroy()
-    
+
     func numberOfRowsInSection(section: Int) -> Int {
     
         if repository.fetchFixedMemo(bool: true).count > 0 {
@@ -140,7 +140,43 @@ class IfManager {
         // 현재 추가한 속성은 "Pingu"만 빨간색으로 바꾼다! 입니다.
         attributeString.addAttribute(.foregroundColor, value: UIColor.tintColor, range: (text as NSString).range(of: searchText))
         return attributeString
-
     }
+    
+    func editText(text: String) {
+        let split = text.split(separator: "\n")
+        let title = split[0]
+        var content: String? = nil
+        
+        if split.count > 1 {
+            content = ""
+            split[1...split.count-1].forEach { content! += "\($0) " }
+        }
+        
+        let task = UserMemo(title: String(title), content: content)
+        repository.addItem(task: task)
+    }
+    
+    func didSelectRowAt(isFiltering: Bool, tasks: Results<UserMemo>, indexPath: IndexPath) -> AddViewController{
+        let vc = AddViewController()
+        vc.modify = true
+        if isFiltering {
+            vc.backButtonTitle = "검색"
+            vc.task = tasks[indexPath.row]
+        } else {
+            let fixedTasks = self.repository.fetchFixedMemo(bool: true)
+            let anfixedTasks = self.repository.fetchFixedMemo(bool: false)
+            if fixedTasks.count > 0 {
+                if indexPath.section == 0 {
+                    vc.task = fixedTasks[indexPath.row]
+                } else {
+                    vc.task = anfixedTasks[indexPath.row]
+                }
+            } else {
+                vc.task = anfixedTasks[indexPath.row]
+            }
+        }
+        return vc
+    }
+    
    
 }
