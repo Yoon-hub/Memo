@@ -121,7 +121,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             cell.titleLabel.text = data[TableViewCellData.title.rawValue]
             cell.titleLabel.textColor = .label
-            cell.contentLabel.textColor = .systemGray
+            cell.contentLabel.textColor = .systemGray   
             cell.contentLabel.text = data[TableViewCellData.content.rawValue]
         }
            
