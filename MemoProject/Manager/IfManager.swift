@@ -10,6 +10,8 @@ import RealmSwift
 
 class IfManager {
     
+    private init() {}
+    
     static let shared = IfManager()
     
     let repository = UserMemoRepositroy()
