@@ -75,6 +75,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		67025C4D28F7FCCB0022CF2D /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				67D4F97328BF9FFE009472E8 /* Main */,
+				677EC79D28C27DB300E2A5A4 /* Add */,
+				677EC7A228C3B9C700E2A5A4 /* Walkthrough */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		67025C4E28F7FCE80022CF2D /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				67D4F95F28BF9253009472E8 /* AppDelegate.swift */,
+				67D4F96128BF9253009472E8 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		67025C4F28F7FD000022CF2D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				67D4F96528BF9253009472E8 /* Main.storyboard */,
+				67D4F96828BF9254009472E8 /* Assets.xcassets */,
+				67D4F96A28BF9254009472E8 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		67025C5028F7FD1A0022CF2D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				67D4F98928BFA802009472E8 /* Protocol */,
+				67D4F98428BFA42E009472E8 /* Extension */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		677EC79D28C27DB300E2A5A4 /* Add */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,20 +173,14 @@
 		67D4F95E28BF9253009472E8 /* MemoProject */ = {
 			isa = PBXGroup;
 			children = (
-				677EC7A228C3B9C700E2A5A4 /* Walkthrough */,
-				677EC79D28C27DB300E2A5A4 /* Add */,
+				67025C5028F7FD1A0022CF2D /* Common */,
+				67025C4D28F7FCCB0022CF2D /* Presentation */,
 				67A1738D28BFF0310034B384 /* Enum */,
 				67A1738C28BFE0340034B384 /* Manager */,
 				67A1738328BFC5140034B384 /* Realm */,
-				67D4F98928BFA802009472E8 /* Protocol */,
-				67D4F98428BFA42E009472E8 /* Extension */,
-				67D4F97328BF9FFE009472E8 /* Main */,
 				67D4F97428BFA00E009472E8 /* Utility */,
-				67D4F95F28BF9253009472E8 /* AppDelegate.swift */,
-				67D4F96128BF9253009472E8 /* SceneDelegate.swift */,
-				67D4F96528BF9253009472E8 /* Main.storyboard */,
-				67D4F96828BF9254009472E8 /* Assets.xcassets */,
-				67D4F96A28BF9254009472E8 /* LaunchScreen.storyboard */,
+				67025C4E28F7FCE80022CF2D /* Application */,
+				67025C4F28F7FD000022CF2D /* Resources */,
 				67D4F96D28BF9254009472E8 /* Info.plist */,
 			);
 			path = MemoProject;
